@@ -1,0 +1,23 @@
+#!/bin/bash
+
+cat <<EOF > /etc/xinetd.d/ctf
+service ctf
+{
+    type            = UNLISTED
+    flags           = REUSE
+    disable         = no
+    socket_type     = stream
+    protocol        = tcp
+    wait            = no
+    user            = ctf
+    log_type        = FILE /var/log/ctf/xinetd.log
+    log_on_success  = HOST EXIT
+    log_on_failure  = HOST
+    port            = ${PORT}
+    bind            = 0.0.0.0
+    server          = /home/ctf/handler.sh
+    per_source      = ${PER_SOURCE:-10}
+    cps             = ${CPS_RATE:-500} ${CPS_DELAY:-3}
+    rlimit_cpu      = ${RLIMIT_CPU:-20}
+}
+EOF

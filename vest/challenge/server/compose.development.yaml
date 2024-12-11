@@ -1,0 +1,15 @@
+services:
+  vest:
+    build: ./src
+    ports:
+      - "10040:10040"
+      - "10039:10039"
+    restart: unless-stopped
+    environment:
+      - FLAG=flag{dev}
+      - PORT=10040
+      - HTTP_PORT=10039
+      - PUBLIC_IP=localhost
+      - FUNC_SIG_IS_SOLVED=isSolved()
+      - SHARED_SECRET=devdevvvddddevvdvedvedvedvdvdd
+      - ENV=development

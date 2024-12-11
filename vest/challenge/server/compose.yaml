@@ -1,0 +1,15 @@
+services:
+  vest:
+    build: ./src
+    ports:
+      - "10040:10040"
+      - "10039:10039"
+    restart: unless-stopped
+    environment:
+      - FLAG=flag{5uch_4_w3ird0_v3sting..}
+      - PORT=10040
+      - HTTP_PORT=10039
+      - PUBLIC_IP=34.55.69.58
+      - FUNC_SIG_IS_SOLVED=isSolved()
+      - SHARED_SECRET=prodprodprodprodppprodddddordppppprdrodrpdrodp
+      - ENV=production

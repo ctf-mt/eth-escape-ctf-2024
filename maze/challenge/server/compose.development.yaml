@@ -1,0 +1,15 @@
+services:
+  maze:
+    build: ./src
+    ports:
+      - "10030:10030"
+      - "10029:10029"
+    restart: unless-stopped
+    environment:
+      - FLAG=flag{dev}
+      - PORT=10030
+      - HTTP_PORT=10029
+      - PUBLIC_IP=localhost
+      - FUNC_SIG_IS_SOLVED=isSolved()
+      - SHARED_SECRET=devdevvvddddevvdvedvedvedvdvd
+      - ENV=development
